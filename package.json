@@ -1,0 +1,28 @@
+{
+  "name": "leaflet.map.config",
+  "version": "1.0.4",
+  "description": "Leaflet map configuration file.",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "leaflet": "^0.7.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Vladimir Buskin"
+  },
+  "license": "ISC",
+  "keywords": [
+    "Leaflet",
+    "Configuration"
+  ],
+  "readme": "\r\n\r\n# Leaflet Config example #\r\n\r\n\r\n\r\n\r\n```javascript\r\nvar config = {\r\n\r\n    // start latitude, longitude\r\n    center: [37.694237, -122.086600],\r\n\r\n    // start zoom level\r\n    zoom: 15,\r\n\r\n    //================================================================================\r\n    // Base Layers\r\n    //================================================================================\r\n    baseLayers: {\r\n\r\n        \"Open Street Map\":\r\n        {\r\n            type: \"L.TileLayer\",\r\n            service: \"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\",\r\n            options: {\r\n                attribution: \"OSM &copy;\"\r\n            }\r\n        },\r\n\r\n        \"Bing Satellite\":\r\n        {\r\n\r\n            type: \"L.BingLayer\",\r\n            service: \"AjyvwwoncG-n9qnf7Dpzae8NFXg_hBN1p2rMmzgfcze9owomwjF2xp3COllSGytl\",\r\n            options: {\r\n                type: 'aerial' // road, aerial\r\n            }\r\n        },\r\n\r\n        \"No Imagery\":\r\n        {\r\n            type: \"L.EmptyLayer\",\r\n            visible: true\r\n        }\r\n\r\n    },\r\n\r\n    //================================================================================\r\n    // Overlays\r\n    //================================================================================\r\n    overlays: {\r\n\r\n        \"ArcGis Pleasanton\":\r\n        {\r\n            type: \"L.MSLayerSelectable\",\r\n            service: 'http://g1.maintstar.com:6080/arcgis/rest/services/Pleasanton_gis1/MapServer',\r\n            visible: true,\r\n            options: {\r\n                maxZoom: 30,\r\n                opacity: 0.9,\r\n                attribution: \"Pleasanton data &copy;\",\r\n                loadLegend: false,\r\n                adapter: \"L.MSAdapter.EsriDynamic\",\r\n                geometryServer: 'http://g1.maintstar.com:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer',\r\n                layersConfig: [\r\n                    { name: \"TreeInventory\", type: \"number\", idField: \"TREEID\" },\r\n                    { name: \"Trails\", type: \"number\", idField: \"OBJECTID\" }\r\n                ]\r\n            }\r\n        },\r\n\r\n        \"Google Maps\":\r\n        {\r\n            type: \"L.MSLayerSelectable\",\r\n            // development url\r\n            service: '',\r\n            //service: 'http://api06.dev.openstreetmap.org/',\r\n            // live url\r\n            //service: 'http://api.openstreetmap.org/',\r\n            visible: true,\r\n            options: {\r\n                opacity: 0.7,\r\n                //attribution: \"My data &copy;\", // who cares, for our own service\r\n                loadLegend: false,\r\n                adapter: \"L.MSAdapter.Google\",\r\n                //geometryServer: 'http://g3.maintstar.com/ArcGIS/rest/services/Geometry/GeometryServer',\r\n                layersConfig: [\r\n                    { name: \"Google Address\", type: \"text\", idField: \"name\" }\r\n                ]\r\n            }\r\n        },\r\n\r\n        \"MS GIS permit\":\r\n        {\r\n            type: \"L.MSLayerSelectable\",\r\n            service: 'http://permitsales.maintstar.com/demo2/mapsvc/',\r\n            visible: true,\r\n            options: {\r\n                opacity: 0.7,\r\n                //attribution: \"My data &copy;\", // who cares, for our own service\r\n                loadLegend: false,\r\n                adapter: \"L.MSAdapter.MSMap\",\r\n                geometryServer: 'http://g1.maintstar.com:6080/ArcGIS/rest/services/Geometry/GeometryServer'\r\n            }\r\n        }\r\n    }\r\n\r\n};\r\n\r\nvar configure = require('leaflet.map.config').configure;\r\n\r\n// create layers by config\r\nvar layers = configure(map, config);\r\n\r\n// add layers control\r\nL.control.layers(layers.baseLayers, layers.overlays).addTo(map);\r\n\r\n'''\r\n",
+  "readmeFilename": "readme.md",
+  "_id": "leaflet.map.config@1.0.3",
+  "_shasum": "d9da6c1d31644438a7d3fcece9253995c7159bb9",
+  "_from": "..\\GitHub\\leaflet.map.config",
+  "_resolved": "file:..\\GitHub\\leaflet.map.config"
+}
